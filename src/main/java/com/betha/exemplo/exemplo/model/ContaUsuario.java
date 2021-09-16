@@ -9,9 +9,9 @@ import java.util.Set;
 @Entity
 public class ContaUsuario extends AbstractEntity {
 
-    @Column(name= "NOME_CONTA")
+    @Column(name= "APELIDO")
     private String nomeConta;
-    @Column(name= "NOME_COMPLETO")
+    @Column(name= "NOME")
     private String nomeCompleto;
     @Column(name= "DATA_NASC")
     private LocalDate dataNascimento;
@@ -24,8 +24,8 @@ public class ContaUsuario extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "I_CIDADES", referencedColumnName = "ID")
     private Cidade cidade;
-    @Transient
-    private Set<Feed> publicacoes;
+//    @Transient
+//    private Set<Feed> publicacoes;
     @Transient
     private Set<Historia> historias;
     @Transient
@@ -89,13 +89,13 @@ public class ContaUsuario extends AbstractEntity {
         this.cidade = cidade;
     }
 
-    public Set<Feed> getPublicacoes() {
-        return publicacoes;
-    }
+//    public Set<Feed> getPublicacoes() {
+//        return publicacoes;
+//    }
 
-    public void setPublicacoes(Set<Feed> publicacoes) {
-        this.publicacoes = publicacoes;
-    }
+//    public void setPublicacoes(Set<Feed> publicacoes) {
+//        this.publicacoes = publicacoes;
+//    }
 
     public Set<Historia> getHistorias() {
         return historias;

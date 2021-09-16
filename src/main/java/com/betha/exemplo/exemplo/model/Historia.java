@@ -9,22 +9,22 @@ import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity
+//@Entity
 public class Historia extends AbstractEntity implements IPublicavel {
 
-    @Column(name= "CONTA_USUARIO")
+//    @Column(name= "CONTA_USUARIO")
     private ContaUsuario contaUsuario;
-    @Column(name= "TIPO_PUBLIC")
+//    @Column(name= "TIPO_PUBLIC")
     private TipoPublicacao tipoPublicacao;
-    @Column(name= "LINK_PUBLICS3")
+//    @Column(name= "LINK_PUBLICS3")
     private String linkPublicacaoS3;
-    @Column(name= "DATA_PUBLIC")
+//    @Column(name= "DATA_PUBLIC")
     private LocalDate dataPublicacao;
-    @Transient
+//    @Transient
     private Set<Curtida> curtidas;
-    @Column(name= "LOCAL_POST")
+//    @Column(name= "LOCAL_POST")
     private LocalizacaoPostagem localizacaoPostagem;
-    @Transient
+//    @Transient
     private Set<Comentario> comentarios;
 
     public ContaUsuario getContaUsuario() {

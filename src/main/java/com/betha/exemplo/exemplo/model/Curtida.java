@@ -6,12 +6,12 @@ import com.betha.exemplo.exemplo.enterprise.IPublicavel;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Curtida extends AbstractEntity {
 
-    @Column(name= "CONTA_USUARIO")
+//    @Column(name= "CONTA_USUARIO")
     private ContaUsuario contaUsuario;
-    @Column(name= "PUBLIC")
+//    @Column(name= "PUBLIC")
     private IPublicavel publicacao;
 
     public ContaUsuario getContaUsuario() {

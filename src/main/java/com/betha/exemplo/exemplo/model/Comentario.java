@@ -10,18 +10,18 @@ import javax.persistence.Transient;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity
+//@Entity
 public class Comentario extends AbstractEntity {
 
-    @Column(name= "DATA_HORA_COMENT")
+//    @Column(name= "DATA_HORA_COMENT")
     private LocalDateTime dataHoraComentario;
-    @Column(name= "USUARIO_COMENT")
+//    @Column(name= "USUARIO_COMENT")
     private ContaUsuario usuarioComentou;
-    @Column(name= "PUBLIC")
+//    @Column(name= "PUBLIC")
     private IPublicavel publicacao;
-    @Column(name= "COMENT")
+//    @Column(name= "COMENT")
     private String comentario;
-    @Transient
+//    @Transient
     private Set<Curtida> curtidas;
 
     public LocalDateTime getDataHoraComentario() {

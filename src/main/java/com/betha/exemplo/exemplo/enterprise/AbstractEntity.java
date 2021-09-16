@@ -11,13 +11,13 @@ public abstract class AbstractEntity {
 
     @Id //Chave primária da entidade
     @GeneratedValue(strategy = GenerationType.AUTO) // Faz o autoincremento do Id
-    private BigInteger id;
+    private Long id;
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

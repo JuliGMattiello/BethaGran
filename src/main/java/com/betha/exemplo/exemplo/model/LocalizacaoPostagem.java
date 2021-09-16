@@ -7,21 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+//@Entity
 public class LocalizacaoPostagem extends AbstractEntity {
     /*
      * Analisar melhor forma de criar a localização dinamica
      * */
-    @ManyToOne
-    @JoinColumn(name = "I_PAISES", referencedColumnName = "ID")
+//    @ManyToOne
+//    @JoinColumn(name = "I_PAISES", referencedColumnName = "ID")
     private Pais pais;
-    @ManyToOne
-    @JoinColumn(name = "I_ESTADOS", referencedColumnName = "ID")
+//    @ManyToOne
+//    @JoinColumn(name = "I_ESTADOS", referencedColumnName = "ID")
     private Estado estado;
-    @ManyToOne
-    @JoinColumn(name = "I_CIDADES", referencedColumnName = "ID")
+//    @ManyToOne
+//    @JoinColumn(name = "I_CIDADES", referencedColumnName = "ID")
     private Cidade cidade;
-    @Column(name= "DESCR_LOCAL")
+//    @Column(name= "DESCR_LOCAL")
     private String descricaoLocal;
 
     public Pais getPais() {

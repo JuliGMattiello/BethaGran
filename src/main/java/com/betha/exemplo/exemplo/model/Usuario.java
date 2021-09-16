@@ -8,16 +8,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
 
-@Entity
+//@Entity
 public class Usuario extends AbstractEntity {
 
-    @Column(name= "LOGIN")
+//    @Column(name= "LOGIN")
     private String login;
-    @Column(name= "PASSWORD")
+//    @Column(name= "PASSWORD")
     private String password;
-    @Column(name= "EMAIL_RECUP")
+//    @Column(name= "EMAIL_RECUP")
     private String emailRecuperacao;
-    @Transient
+//    @Transient
     private Set<ContaUsuario> contasAssociadas;
 
     public String getLogin() {
