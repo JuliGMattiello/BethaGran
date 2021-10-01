@@ -1,7 +1,7 @@
 package com.betha.exemplo.exemplo.resource;
 
         import com.betha.exemplo.exemplo.model.Estado;
-        import com.betha.exemplo.exemplo.repoitory.EstadoRepository;
+        import com.betha.exemplo.exemplo.repository.EstadoRepository;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.http.ResponseEntity;
         import org.springframework.web.bind.annotation.*;

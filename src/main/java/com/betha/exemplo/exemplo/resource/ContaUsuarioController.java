@@ -1,7 +1,7 @@
 package com.betha.exemplo.exemplo.resource;
 
 import com.betha.exemplo.exemplo.model.ContaUsuario;
-import com.betha.exemplo.exemplo.repoitory.ContaUsuarioRepository;
+import com.betha.exemplo.exemplo.repository.ContaUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
