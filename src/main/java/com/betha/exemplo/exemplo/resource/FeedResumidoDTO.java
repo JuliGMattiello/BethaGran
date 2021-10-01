@@ -1,42 +1,18 @@
-package com.betha.exemplo.exemplo.model;
+package com.betha.exemplo.exemplo.resource;
 
-import com.betha.exemplo.exemplo.enterprise.AbstractEntity;
-import com.betha.exemplo.exemplo.enterprise.IPublicavel;
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
-import java.util.Set;
+import com.betha.exemplo.exemplo.model.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
-@Entity
-public class Feed extends AbstractEntity implements IPublicavel {
-
-    @ManyToOne
-    @JoinColumn(name= "I_CTA_USUARIOS" ,referencedColumnName = "ID")
-    private ContaUsuario contaUsuario;
-   @Column(name= "TIPO")
+public class FeedResumidoDTO {
     private TipoPublicacao tipoPublicacao;
-    @Column(name= "LINK")
     private String linkPublicacaoS3;
-    @Column(name= "DATA")
     private LocalDate dataPublicacao;
-    @Column(name= "TEXTO")
     private String textoPublicacao;
-    @Transient
     private Set<Comentario> comentarios;
-    @Transient
     private Set<Curtida> curtidas;
-    @Transient
     private LocalizacaoPostagem localizacaoPostagem;
-
-    public ContaUsuario getContaUsuario() {
-        return contaUsuario;
-    }
-
-    public void setContaUsuario(ContaUsuario contaUsuario) {
-        this.contaUsuario = contaUsuario;
-    }
 
     public TipoPublicacao getTipoPublicacao() {
         return tipoPublicacao;
@@ -70,7 +46,6 @@ public class Feed extends AbstractEntity implements IPublicavel {
         this.textoPublicacao = textoPublicacao;
     }
 
-    @Override
     public Set<Comentario> getComentarios() {
         return comentarios;
     }
@@ -95,17 +70,29 @@ public class Feed extends AbstractEntity implements IPublicavel {
         this.localizacaoPostagem = localizacaoPostagem;
     }
 
-    @Override
-    public String toString() {
-        return "Feed{" +
-                "contaUsuario=" + contaUsuario +
-                ", tipoPublicacao=" + tipoPublicacao +
-                ", dataPublicacao=" + dataPublicacao +
-                '}';
+    public static FeedResumidoDTO toDTO(Feed feed) {
+        FeedResumidoDTO dto = new FeedResumidoDTO();
+        dto.setTipoPublicacao(feed.getTipoPublicacao());
+        dto.setComentarios(feed.getComentarios());
+        dto.setDataPublicacao(feed.getDataPublicacao());
+        dto.setLinkPublicacaoS3(feed.getLinkPublicacaoS3());
+        dto.setLocalizacaoPostagem(feed.getLocalizacaoPostagem());
+        dto.setCurtidas(feed.getCurtidas());
+        dto.setTextoPublicacao(feed.getTextoPublicacao());
+        return dto;
     }
 
-    @Override
-    public ContaUsuario getUsuarioPublicou() {
-        return getUsuarioPublicou();
+    public static Feed fromDTO(FeedResumidoDTO dto) {
+        Feed entity = new Feed();
+        entity.setTipoPublicacao(dto.getTipoPublicacao());
+        entity.setComentarios(dto.getComentarios());
+        entity.setDataPublicacao(dto.getDataPublicacao());
+        entity.setLinkPublicacaoS3(dto.getLinkPublicacaoS3());
+        entity.setLocalizacaoPostagem(dto.getLocalizacaoPostagem());
+        entity.setCurtidas(dto.getCurtidas());
+        entity.setTextoPublicacao(dto.getTextoPublicacao());
+        return entity;
     }
+
+
 }

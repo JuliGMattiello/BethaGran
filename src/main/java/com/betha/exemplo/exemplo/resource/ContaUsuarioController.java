@@ -25,7 +25,7 @@ public class ContaUsuarioController {
     public ContaUsuario getContaUsuarioId(@PathVariable(value = "id") Long contaUsuarioId) throws EntityNotFoundException {
 
         ContaUsuario contaUsuarioFind = repository.findById(contaUsuarioId)
-                .orElseThrow(() -> new EntityNotFoundException("País não encontrado com ID: " + contaUsuarioId));
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + contaUsuarioId));
 
         return contaUsuarioFind;
     }
@@ -48,13 +48,11 @@ public class ContaUsuarioController {
         contaUsuarioFind.setBiografia(contaUsuario.getBiografia());
         contaUsuarioFind.setLink(contaUsuario.getLink());
         contaUsuarioFind.setCidade(contaUsuario.getCidade());
-//        contaUsuarioFind.setPublicacoes(contaUsuario.getPublicacoes());
         contaUsuarioFind.setHistorias(contaUsuario.getHistorias());
         contaUsuarioFind.setSeguidores(contaUsuario.getSeguidores());
         contaUsuarioFind.setSeguindo(contaUsuario.getSeguindo());
 
         return repository.save(contaUsuarioFind);
-
     }
 
     @DeleteMapping("/{id}")

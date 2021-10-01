@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/cidades")
@@ -17,22 +18,22 @@ public class CidadeController {
     private CidadeRepository repository;
 
     @GetMapping
-    public List<Cidade> getCidades(){
-        return repository.findAll();
+    public List<CidadeDTO> getCidades(){
+        return repository.findAll().stream().map(p-> CidadeDTO.toDTO(p)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public Cidade getCidadesId(@PathVariable(value = "id") Long cidadeId) throws EntityNotFoundException {
+    public CidadeDTO getCidadesId(@PathVariable(value = "id") Long cidadeId) throws EntityNotFoundException {
 
         Cidade cidadeFind = repository.findById(cidadeId)
                 .orElseThrow(() -> new EntityNotFoundException("País não encontrado com ID: " + cidadeId));
 
-        return cidadeFind;
+        return CidadeDTO.toDTO(cidadeFind);
     }
 
     @PostMapping
-    public Cidade create(@RequestBody Cidade cidade){
-        return repository.save(cidade);
+    public CidadeDTO create(@RequestBody Cidade cidade){
+        return CidadeDTO.toDTO(repository.save(cidade));
     }
 
     @PutMapping("/{id}")

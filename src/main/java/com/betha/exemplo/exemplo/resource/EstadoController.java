@@ -1,15 +1,14 @@
 package com.betha.exemplo.exemplo.resource;
 
         import com.betha.exemplo.exemplo.model.Estado;
-        import com.betha.exemplo.exemplo.model.Pais;
         import com.betha.exemplo.exemplo.repoitory.EstadoRepository;
-        import com.betha.exemplo.exemplo.repoitory.PaisRepository;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.http.ResponseEntity;
         import org.springframework.web.bind.annotation.*;
 
         import javax.persistence.EntityNotFoundException;
         import java.util.List;
+        import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/estados")
@@ -19,22 +18,22 @@ public class EstadoController {
     private EstadoRepository repository;
 
     @GetMapping
-    public List<Estado> getEstado(){
-        return repository.findAll();
+    public List<EstadoDTO> getEstado(){
+        return repository.findAll().stream().map(p-> EstadoDTO.toDTO(p)).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public Estado getEstadoId(@PathVariable(value = "id") Long estadoId) throws EntityNotFoundException {
+    public EstadoDTO getEstadoId(@PathVariable(value = "id") Long estadoId) throws EntityNotFoundException {
 
         Estado estadoFind = repository.findById(estadoId)
                 .orElseThrow(() -> new EntityNotFoundException("Estado não encontrado com ID: " + estadoId));
 
-        return estadoFind;
+        return EstadoDTO.toDTO(estadoFind);
     }
 
     @PostMapping
-    public Estado create(@RequestBody Estado estado){
-        return repository.save(estado);
+    public EstadoDTO create(@RequestBody Estado estado){
+        return EstadoDTO.toDTO(repository.save(estado));
     }
 
     @PutMapping("/{id}")
@@ -58,8 +57,5 @@ public class EstadoController {
         repository.delete(estadoFind);
         return ResponseEntity.noContent().build();
     }
-
-
-
 }
 

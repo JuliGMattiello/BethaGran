@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 public class ContaUsuario extends AbstractEntity {
 
@@ -24,8 +26,8 @@ public class ContaUsuario extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "I_CIDADES", referencedColumnName = "ID")
     private Cidade cidade;
-//    @Transient
-//    private Set<Feed> publicacoes;
+    @OneToMany(cascade = ALL, mappedBy = "contaUsuario")
+    private Set<Feed> publicacoes;
     @Transient
     private Set<Historia> historias;
     @Transient
@@ -89,13 +91,13 @@ public class ContaUsuario extends AbstractEntity {
         this.cidade = cidade;
     }
 
-//    public Set<Feed> getPublicacoes() {
-//        return publicacoes;
-//    }
+    public Set<Feed> getPublicacoes() {
+        return publicacoes;
+    }
 
-//    public void setPublicacoes(Set<Feed> publicacoes) {
-//        this.publicacoes = publicacoes;
-//    }
+    public void setPublicacoes(Set<Feed> publicacoes) {
+        this.publicacoes = publicacoes;
+    }
 
     public Set<Historia> getHistorias() {
         return historias;
