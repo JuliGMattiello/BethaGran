@@ -2,6 +2,8 @@ package com.betha.exemplo.exemplo.resource;
 
 import com.betha.exemplo.exemplo.model.Cidade;
 import com.betha.exemplo.exemplo.model.ContaUsuario;
+import com.betha.exemplo.exemplo.model.Escolaridade;
+import com.betha.exemplo.exemplo.model.Sexo;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -16,9 +18,10 @@ public class ContaUsuarioDTO {
     private String biografia;
     private String link;
     private Cidade cidade;
+    private Sexo sexo;
     private Set<FeedResumidoDTO> publicacoes;
 
-    public String getNomeConta() {
+   public String getNomeConta() {
         return nomeConta;
     }
 
@@ -78,6 +81,14 @@ public class ContaUsuarioDTO {
         return publicacoes;
     }
 
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
     public void setPublicacoes(Set<FeedResumidoDTO> publicacoes) {
         this.publicacoes = publicacoes;
     }
@@ -90,6 +101,7 @@ public class ContaUsuarioDTO {
         dto.setDaraCriacaoConta(contaUsuario.getDaraCriacaoConta());
         dto.setLink(contaUsuario.getLink());
         dto.setCidade(contaUsuario.getCidade());
+        dto.setSexo(contaUsuario.getSexo());
         dto.setPublicacoes(contaUsuario.getPublicacoes().stream().map(FeedResumidoDTO::toDTO).collect(Collectors.toSet()));
         return dto;
     }
@@ -102,6 +114,7 @@ public class ContaUsuarioDTO {
         entity.setDaraCriacaoConta(contaUsuarioDto.getDaraCriacaoConta());
         entity.setLink(contaUsuarioDto.getLink());
         entity.setCidade(contaUsuarioDto.getCidade());
+        entity.setSexo(contaUsuarioDto.getSexo());
         entity.setPublicacoes(contaUsuarioDto.getPublicacoes().stream().map(FeedResumidoDTO::fromDTO).collect(Collectors.toSet()));
         return entity;
     }

@@ -2,11 +2,16 @@ package com.betha.exemplo.exemplo.enterprise;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @MappedSuperclass
 public class AbstractRegion extends AbstractEntity {
+    @NotNull(message = "O nome não pode ser nulo!")
+    @Size(max = 12, min = 3)
     @Column(name= "NOME")
     private String nome;
+    @NotNull
     @Column(name= "POPULACAO")
     private String populacao;
 
